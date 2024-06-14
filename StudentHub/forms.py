@@ -25,7 +25,7 @@ class StudentForm(forms.ModelForm):
 
         model = Student
 
-        fields = ["id", "student_name", "category_name", "mobile_number", "place"]
+        fields = ["id", "student_name", "category_name", "mobile_number", "place", "email", "qualification"]
 
     
         widgets = {
@@ -33,6 +33,8 @@ class StudentForm(forms.ModelForm):
             "category_name": forms.Select(attrs={'class': 'form-select mb-3'}),
             "mobile_number": forms.TextInput(attrs={'class': 'form-control mb-3'}),
             "place": forms.TextInput(attrs={'class': 'form-control mb-3'}),
+            "email": forms.EmailInput(attrs={'class': 'form-control mb-3'}),
+            "qualification": forms.TextInput(attrs={'class': 'form-control mb-3'})
             
         }
 
