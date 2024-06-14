@@ -78,6 +78,16 @@
         {{ form.place }}
         {{ form.place.errors }}
       </div>
+      <div class="mb-3 w-50">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+      </div>
+      <div class="mb-3 w-50">
+        {{ form.qualification.label_tag }}
+        {{ form.qualification }}
+        {{ form.qualification.errors }}
+      </div>
       <button type="submit" class="btn btn-primary">Save changes</button>
       <a href="{% url 'home' %}" class="btn btn-secondary">Cancel</a>
     </form>
