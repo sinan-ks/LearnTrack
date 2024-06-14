@@ -21,6 +21,30 @@
     background-color: #0093E9;
     background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
   }
+
+  .btn-custom {
+    background-color: #28a745;
+    border-color: #28a745;
+    color: white;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .btn-custom:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: scale(1.05);
+  }
+
+  .btn-custom:active {
+    background-color: #1e7e34;
+    border-color: #1c7430;
+    transform: scale(1.02);
+  }
+
+  .btn-custom:focus {
+    box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.5);
+  }
 </style>
 
 <body>
@@ -44,7 +68,6 @@
             <a class="nav-link" href="{% url 'student-add' %}">+ Student</a>
           </li>
         </ul>
-
       </div>
     </div>
   </nav>
@@ -52,32 +75,31 @@
   {% if messages %}
   {% for m in messages %}
   <div class="d-flex justify-content-center mt-5">
-      <div class="alert alert-warning alert-dismissible fade show w-40" role="alert">
-          <strong>{{ m }}</strong>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-      </div>
+    <div class="alert alert-warning alert-dismissible fade show w-40" role="alert">
+      <strong>{{ m }}</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
   </div>
   {% endfor %}
   {% endif %}
 
-
   <div class="container">
-
-    <div class="d-flex mb-3 mt-3">
-      <h2>Add Student</h2>
-    </div>
-
-    <div class="d-flex mb-5">
-
-      <form action="" method="post">
-        {% csrf_token %}
-        {{stu_form}}
-        <button type="submit" class="btn btn-primary">Add student</button>
-      </form>
-
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="text-center mb-3 mt-3">
+          <h2>Add Student</h2>
+        </div>
+        <form action="" method="post">
+          {% csrf_token %}
+          {{stu_form}}
+          <button type="submit" class="btn btn-custom">Add student</button>
+        </form>
+      </div>
     </div>
   </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
 </html>
