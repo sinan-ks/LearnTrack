@@ -22,6 +22,10 @@ class Student(models.Model):
 
     category_name = models.ForeignKey(Category, on_delete=models.CASCADE, related_name="category")
 
+    gender=models.CharField(max_length=20, null=True)
+
+    age=models.IntegerField(null=True)
+
     place = models.CharField(max_length=200)
 
     mobile_number = models.CharField(max_length=200)
