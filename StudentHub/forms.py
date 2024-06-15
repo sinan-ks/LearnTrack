@@ -21,21 +21,30 @@ class CategoryForm(forms.ModelForm):
 
 class StudentForm(forms.ModelForm):
 
+    GENDER_CHOICES = [
+        ('male', 'Male'),
+        ('female', 'Female'),
+    ]
+
+    gender = forms.ChoiceField(
+        choices=GENDER_CHOICES,
+        widget=forms.Select(attrs={'class': 'form-select mb-3'})
+    )
+
     class Meta:
 
         model = Student
-
-        fields = ["id", "student_name", "category_name", "mobile_number", "place", "email", "qualification"]
-
-    
+        
+        fields = ["id", "student_name", "category_name", "mobile_number", "place", "email", "qualification", "gender", "age"]
+        
         widgets = {
             "student_name": forms.TextInput(attrs={'class': 'form-control mb-3'}),
             "category_name": forms.Select(attrs={'class': 'form-select mb-3'}),
             "mobile_number": forms.TextInput(attrs={'class': 'form-control mb-3'}),
             "place": forms.TextInput(attrs={'class': 'form-control mb-3'}),
             "email": forms.EmailInput(attrs={'class': 'form-control mb-3'}),
-            "qualification": forms.TextInput(attrs={'class': 'form-control mb-3'})
-            
+            "qualification": forms.TextInput(attrs={'class': 'form-control mb-3'}),
+            "age": forms.NumberInput(attrs={'class': 'form-control mb-3'}),
         }
 
         
