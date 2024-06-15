@@ -14,7 +14,12 @@ urlpatterns = [
 
     path("student/<int:pk>/remove/", views.StudentDeleteView.as_view(), name="student-delete"),
 
-    path("student/<int:pk>/update/", views.StudentUpdateView.as_view(), name="student-edit")
+    path("student/<int:pk>/update/", views.StudentUpdateView.as_view(), name="student-edit"),
 
+    path('category/all/', views.CategoryListView.as_view(), name='category-list'),
+
+    path('category/<int:pk>/update/', views.CategoryEditView.as_view(), name='category-edit'),
+
+    path('category/<int:pk>/remove/', views.CategoryDeleteView.as_view(), name='category-delete')
 
 ]

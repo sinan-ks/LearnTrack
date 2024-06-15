@@ -43,6 +43,7 @@ class Home(View):
 
         return render(request, "index.html", {"categories": categories, "students": students, 'cat_form': cat_form})
 
+
 class CatFormView(View):
 
     def get(self, request, *args, **kwargs):
@@ -62,6 +63,7 @@ class CatFormView(View):
         
         return render(request, "cat_form.html", {"cat_form": cat_form})
 
+
 class StuFormView(View):
 
     def get(self, request, *args, **kwargs):
@@ -80,6 +82,7 @@ class StuFormView(View):
         
         return render(request, "stu_form.html", {"stu_form": stu_form})
 
+
 class StudentDetailView(View):
 
     def get(self, request, *args, **kwargs):
@@ -88,6 +91,7 @@ class StudentDetailView(View):
         qs = Student.objects.get(id=id)
 
         return render(request, 'student_detail.html', {'data': qs})
+
 
 class StudentDeleteView(View):
 
@@ -98,6 +102,7 @@ class StudentDeleteView(View):
         messages.success(request, "Student deleted successfully.")
 
         return redirect('home')
+
 
 class StudentUpdateView(View):
 
@@ -121,3 +126,44 @@ class StudentUpdateView(View):
             return redirect('home')
         else:
             return render(request, 'student_edit.html', {'form': form})
+        
+
+class CategoryListView(View):
+
+    def get(self, request, *args, **kwargs):
+        categories = Category.objects.all()
+        return render(request, "category_list.html", {"categories": categories})
+
+
+class CategoryEditView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        id = kwargs.get('pk')
+        category_object = Category.objects.get(id=id)
+        form = CategoryForm(instance=category_object)
+
+        return render(request, 'category_edit.html', {'form': form})
+
+    def post(self, request, *args, **kwargs):
+
+        id = kwargs.get('pk')
+        category_object = Category.objects.get(id=id)
+        form = CategoryForm(request.POST, instance=category_object)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Category updated successfully.")
+            return redirect('home')
+        else:
+            return render(request, 'category_edit.html', {'form': form})
+
+
+class CategoryDeleteView(View):
+
+    def get(self, request, *args, **kwargs):
+
+        id = kwargs.get('pk')
+        Category.objects.get(id=id).delete()
+        messages.success(request, "Category deleted successfully.")
+        return redirect('home')

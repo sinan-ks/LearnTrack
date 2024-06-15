@@ -67,10 +67,14 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'student-add' %}">+ Student</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'category-list' %}">Category List</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
+
 
   {% if messages %}
   {% for m in messages %}
